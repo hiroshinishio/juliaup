@@ -6,7 +6,7 @@ The installer also bundles a full Julia version manager called `juliaup`. One ca
 
 ## Status
 
-This installer is considered production ready. 
+This installer is considered production ready.
 
 ## Installation
 
@@ -91,6 +91,10 @@ To install via Rust's cargo, run:
 cargo install juliaup
 ```
 
+## Continuous Integration (CI)
+
+If you use GitHub Actions as your CI provider, you can use the [`julia-actions/install-juliaup`](https://github.com/julia-actions/install-juliaup) action to install Juliaup in CI.
+
 ## Using Juliaup
 
 Once you have installed Juliaup, `julia` is on the `PATH`, and on Windows there is a start menu shortcut and it will show up as a profile in Windows Terminal. Any of those will start Julia. The VS Code extension will also automatically find this Julia installation.
@@ -126,6 +130,7 @@ The available system provided channels are:
 - `beta`: always points to the latest beta version if one exists. If a newer release candidate exists, it will point to that, and if there is neither a beta or rc candidate available it will point to the same version as the `release` channel.
 - `rc`: same as `beta`, but only starts with release candidate versions.
 - `nightly`: always points to the latest build from the `master` branch in the Julia repository.
+- `pr{number}` (e.g. `pr123`): points to the latest successful build of a PR branch (https://github.com/JuliaLang/julia/pull/{number}). Only available if CI has recently and successfully built Julia on that branch.
 - specific versions, e.g. `1.5.4`.
 - minor version channels, e.g. `1.5`.
 - major version channels, e.g. `1`.
@@ -165,7 +170,7 @@ If requested, the environment variable `JULIAUP_SERVER` can be used to tell Juli
 For juliaup developers, information on how to build juliaup locally, update julia versions, and release updates
 can be found in the wiki https://github.com/JuliaLang/juliaup/wiki
 
-To use unstable preview versions of juliaup (e.g. to gt a patch before it makes it into the latest release), use
+To use unstable preview versions of juliaup (e.g. to get a patch before it makes it into the latest release), use
 
 ```
 curl -fsSL https://install.julialang.org/releasepreview | sh
